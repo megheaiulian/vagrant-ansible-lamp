@@ -1,0 +1,15 @@
+# Install PHP5
+- name: Install PHP 5
+  apt: name={{ item }} state=latest
+  with_items:
+    - libapache2-mod-php5
+    - php5
+    - php5-cgi
+    - php5-cli
+    - php5-curl
+    - php5-json
+    - php5-odbc
+    - php5-tidy
+    - php5-common
+    - php5-sqlite
+    - php5-xmlrpc

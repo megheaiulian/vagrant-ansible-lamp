@@ -1,0 +1,7 @@
+- name: Add /vagrant virtual host
+  template: src=develop.conf.j2 dest=/etc/apache2/sites-available/develop.conf
+
+- name: Enable /vagrant virtual host
+  sudo: true
+  command: a2ensite develop.conf
+  notify: restart apache
