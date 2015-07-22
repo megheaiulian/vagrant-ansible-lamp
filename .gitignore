@@ -1,1 +1,5 @@
+# Vagrant machine info folder
 .vagrant/
+
+#Vagrant generated ansible inventory
+/vagrant_ansible_inventory_*
