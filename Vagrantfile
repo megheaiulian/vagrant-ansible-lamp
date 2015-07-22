@@ -59,7 +59,7 @@ Vagrant.configure(2) do |config|
 			ansible.extra_vars = {
 				project_name: project,
 				project_mysql_root_pass: 'rootroot',
-				project_sql_path: 'config/db/gybell.sql'
+				#project_sql_path: 'config/db/gybell.sql'
 			}
 		end
 	end
