@@ -3,6 +3,7 @@
 
 #Project name used for database name,user & pass
 project = "develop"
+ansibl = 'provision/ansible/'
 
 Vagrant.configure(2) do |config|
 	config.vm.box = "ubuntu/trusty64"
@@ -38,7 +39,7 @@ Vagrant.configure(2) do |config|
 		develop.hostmanager.aliases = ["#{project}.local"]
 
 		develop.vm.provision windows ? :guest_ansible : :ansible do |ansible|
-			ansible.playbook = 'ansible/develop.yml'
+			ansible.playbook = "#{ansibl}develop.yml"
 			ansible.extra_vars = {
 				project: project,
 			}
