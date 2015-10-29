@@ -27,4 +27,4 @@
   mysql_db: name=test state=absent
 
 - include: db.yml
-	when: sql_file is defined
+  when: sql_file is defined
