@@ -1,7 +1,6 @@
 ---
 
 apache2_modules:
-  - version
   - rewrite
 
 mysql_root_pass: "rootroot"
