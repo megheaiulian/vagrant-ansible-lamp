@@ -6,5 +6,8 @@
     - ::1
     - localhost
 
+- name: Create mysql database
+  mysql_db: name={{project}} state=present
+
 - name: Import mysql database
   mysql_db: name={{project}} state=import target=/vagrant/{{sql_file}}
