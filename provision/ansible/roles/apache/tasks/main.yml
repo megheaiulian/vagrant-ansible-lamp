@@ -1,4 +1,17 @@
 ---
 
-- include: install.yml
-- include: modules.yml
+- name: install apache
+  apt: name=apache2 state=latest update_cache=true
+  notify: start apache
+
+- name: enable apache modules
+  apache2_module: state=present name={{item}}
+  with_items: "{{apache2_modules}}"
+  notify: restart apache
+
+- name: Add project Virtual Host
+  template: src=project.conf.j2 dest=/etc/apache2/sites-available/project.conf
+
+- name: Enable Virtual Host
+  command: a2ensite project.conf
+  notify: restart apache

@@ -1,6 +1,0 @@
----
-  
-- include: vhost.yml
-
-- include: db.yml
-  when: project_sql_path is defined

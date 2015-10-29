@@ -1,5 +1,30 @@
 ---
 
-- include: install.yml
+- name: Install mysql
+  apt: name={{ item }} state=latest
+  with_items:
+    - mysql-server
+    - python-mysqldb
+    - php5-mysql
+    - libapache2-mod-auth-mysql
+  notify: start mysql
 
-- include: setup.yml
+- name: Update mysql root passwd
+  mysql_user: name=root host={{ item }} password={{mysql_root_pass}}
+  with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Copy user my.cnf file with root mysql credentials
+  template: src=my.cnf.j2 dest=~/.my.cnf mode=0600
+
+- name: Delete anonymous mysql user
+  mysql_user: name="" state=absent
+
+- name: Remove mysql test database
+  mysql_db: name=test state=absent
+
+- include: db.yml
+	when: sql_file is defined

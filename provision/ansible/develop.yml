@@ -6,4 +6,6 @@
     - mysql
     - php
     - phpmyadmin
-    - develop
+		
+  handlers:
+    - include: handlers/handlers.yml

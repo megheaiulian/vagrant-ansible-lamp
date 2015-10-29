@@ -1,8 +1,8 @@
 <VirtualHost *:80>
-    DocumentRoot /vagrant
+    DocumentRoot {{document_root}}
     ServerName {{ansible_hostname}}
     ServerAlias {{ansible_hostname}}.local localhost
-    <Directory /vagrant>
+    <Directory {{document_root}}>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
         <IfVersion < 2.4>

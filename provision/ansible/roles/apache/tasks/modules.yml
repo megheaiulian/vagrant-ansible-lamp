@@ -1,9 +1,0 @@
----
-
-- name: enable apache mod rewrite
-  apache2_module: state=present name=rewrite
-  notify: restart apache
-
-- name: enable apache mod version
-  apache2_module: state=present name=version
-  notify: restart apache

@@ -1,0 +1,10 @@
+- name: Create the MySQL user for the project
+  mysql_user: name={{project}} host={{ item }} password={{project}} priv=*.*:ALL,GRANT
+  with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost
+		
+- name: Import mysql database
+  mysql_db: name={{project}} state=import target=/vagrant/{{sql_file}}
