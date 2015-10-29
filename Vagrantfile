@@ -5,7 +5,7 @@
 project = "develop"
 
 Vagrant.configure(2) do |config|
-	config.vm.box = "hashicorp/precise64"
+	config.vm.box = "ubuntu/trusty64"
 
 	config.hostmanager.enabled = true
 	config.hostmanager.manage_host = true
